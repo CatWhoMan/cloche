@@ -1,0 +1,99 @@
+body {
+  margin: 0;
+  background: radial-gradient(circle at center, #fcded6 35%, #204ecf 100%);
+  font-family: "Joly Headline", serif;
+  color: #204ecf;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+
+h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+.container {
+  text-align: center;
+  width: 80%;
+  max-width: 800px;
+}
+
+#title {
+  font-size: 4rem;
+  letter-spacing: 0.2rem;
+  font-family: "Joly Headline", serif;
+  font-style: italic;
+  color: #6b4d2d;
+  cursor: pointer;
+  transition: transform 0.4s ease, color 0.4s ease;
+}
+
+#title:hover {
+  transform: scale(1.0);
+  color: #b88b4a;
+}
+
+#poem p {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 1.5s ease, transform 2s ease;
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.show p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.fade-out p {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 2s ease, transform 3s ease;
+}
+
+/* Effet de "flottement" vers l’espace */
+.float-away {
+  position: relative;
+  animation: floatAway 6s ease-in forwards;
+  opacity: 1;
+}
+
+@keyframes floatAway {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-50px) scale(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-200px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+body::after {
+  content: "";
+  position: float;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.03) 0,
+    rgba(32, 79, 207, 1) 1px,
+    transparent 1px,
+    transparent 1.5px
+  );
+  mix-blend-mode: multiply;
+  opacity: 0.3;
+  z-index: 1;
+}
